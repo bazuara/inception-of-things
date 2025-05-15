@@ -1,29 +1,25 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/jammy64"
-  
-    config.vm.define "bazuaraagserranS" do |server|
-      server.vm.hostname = "bazuaraagserranS"
-      server.vm.network "private_network", ip: "192.168.56.110"
-      server.vm.provider "virtualbox" do |vb|
-        vb.name = "bazuaraagserranS"
-        vb.memory = 512
-        vb.cpus = 1
-      end
-      server.vm.provision "shell", path: "scripts/install_k3s.sh", args: "server"
+  config.vm.box = "ubuntu/jammy64" # Ubuntu 22.04 LTS
+
+  # Server node (Master)
+  config.vm.define "bazuaraagserranS" do |server|
+    server.vm.hostname = "bazuaraagserranS"
+    server.vm.network "private_network", ip: "192.168.56.110"
+    server.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024
+      vb.cpus = 1
     end
-  
-    config.vm.define "bazuaraagserranSW" do |worker|
-      worker.vm.hostname = "bazuaraagserranSW"
-      worker.vm.network "private_network", ip: "192.168.56.111"
-      worker.vm.provider "virtualbox" do |vb|
-        vb.name = "bazuaraagserranSW"
-        vb.memory = 512
-        vb.cpus = 1
-      end
-      worker.vm.provision "shell", path: "scripts/install_k3s.sh", args: "agent"
-    end
+    server.vm.provision "shell", path: "scripts/install_k3s_server.sh"
   end
-  
+
+  # Worker node
+  config.vm.define "bazuaraagserranSW" do |worker|
+    worker.vm.hostname = "bazuaraagserranSW"
+    worker.vm.network "private_network", ip: "192.168.56.111"
+    worker.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024
+      vb.cpus = 1
+    end
+    worker.vm.provision "shell", path: "scripts/install_k3s_agent.sh"
+  end
+end
