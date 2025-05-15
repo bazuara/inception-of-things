@@ -1,7 +1,7 @@
 # Inception-of-Things (IoT)
 
 <p align="center">
-  <img src="./images/iot_logo.png" alt="Inception-of-Things Project Banner" />
+  <img src="./images/iot_logo.png" alt="Inception-of-Things Project Banner" width="50%" />
 </p>
 
 ## Overview
