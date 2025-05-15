@@ -1,5 +1,9 @@
 # Inception-of-Things (IoT)
 
+<p align="center">
+  <img src="./images/iot_logo.png" alt="Inception-of-Things Project Banner" />
+</p>
+
 ## Overview
 
 Welcome to **Inception-of-Things**, a hands-on system administration project where we explored the world of **Kubernetes**, **DevOps**, and **infrastructure automation**.  
