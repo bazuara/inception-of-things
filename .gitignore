@@ -38,3 +38,6 @@ Thumbs.db
 *.bak
 *.tmp
 *.cache
+
+# --- 42 project
+token
