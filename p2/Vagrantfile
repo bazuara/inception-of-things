@@ -1,0 +1,14 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+
+  config.vm.define "bazuaraagserranS" do |server|
+    server.vm.hostname = "bazuaraagserranS"
+    server.vm.network "private_network", ip: "192.168.56.110"
+    server.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+    server.vm.provision "shell", path: "scripts/install_k3s_server.sh"
+    server.vm.provision "shell", path: "scripts/deploy_apps.sh"
+  end
+end
