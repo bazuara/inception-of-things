@@ -55,16 +55,14 @@ else
   echo "[INFO] kubectl already installed"
 fi
 
-echo "[INFO] Creating k3d cluster named 'iot-cluster' if it doesn't exist"
-if ! k3d cluster list | grep -q iot-cluster
-then
-  k3d cluster create iot-cluster --api-port 6550 -p "80:80@loadbalancer" --wait
-else
-  echo "[INFO] Cluster 'iot-cluster' already exists"
-fi
+echo "[INFO] Deleting existing cluster if it exists..."
+k3d cluster delete iot-cluster || true
+
+echo "[INFO] Creating k3d cluster named 'iot-cluster' with HTTP port mapped to localhost:30080"
+k3d cluster create iot-cluster --api-port 6550 -p "30080:30080@loadbalancer" --wait
 
 echo "[INFO] Setting KUBECONFIG environment variable"
 export KUBECONFIG=$(k3d kubeconfig write iot-cluster)
 
-echo "[INFO] K3d cluster 'iot-cluster' is ready"
+echo "[INFO] Cluster 'iot-cluster' is ready and accessible via http://localhost:30080"
 kubectl get nodes -o wide
