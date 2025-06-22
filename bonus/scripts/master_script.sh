@@ -19,4 +19,8 @@ fi
 echo
 echo "[✅] All components deployed."
 echo "  - ArgoCD: http://localhost:8081"
+echo "  - User: admin"
+echo "  - Password: $(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d && echo)"
 echo "  - GitLab: http://localhost:8082"
+echo "  - User: root"
+echo "  - $(kubectl -n gitlab exec -it deploy/gitlab -- grep 'Password:' /etc/gitlab/initial_root_password)"

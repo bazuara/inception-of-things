@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://gitlab.localhost/root/inception-of-things.git
+    repoURL: http://localhost:8082/root/inception-of-things.git
     targetRevision: HEAD
     path: p3/confs
   syncPolicy:
