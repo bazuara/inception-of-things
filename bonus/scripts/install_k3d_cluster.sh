@@ -58,11 +58,11 @@ fi
 echo "[INFO] Deleting existing cluster if it exists..."
 k3d cluster delete iot-cluster || true
 
-echo "[INFO] Creating k3d cluster named 'iot-cluster' with HTTP port mapped to localhost:30080"
-k3d cluster create iot-cluster --api-port 6550 -p "443:443@loadbalancer" --wait
+echo "[INFO] Creating k3d cluster named 'iot-cluster' with HTTP ports 8081 and 8082"
+k3d cluster create iot-cluster --api-port 6550 -p "8081:30081@loadbalancer" -p "8082:30082@loadbalancer" --wait
 
 echo "[INFO] Setting KUBECONFIG environment variable"
 export KUBECONFIG=$(k3d kubeconfig write iot-cluster)
 
-echo "[INFO] Cluster 'iot-cluster' is ready and accessible via http://localhost:30080"
+echo "[INFO] Cluster 'iot-cluster' is ready."
 kubectl get nodes -o wide

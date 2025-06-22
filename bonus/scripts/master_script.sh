@@ -11,15 +11,12 @@ else
   echo "[INFO] Keeping current cluster..."
 fi
 
-./p3/scripts/install_k3d_cluster.sh
-./p3/scripts/install_argocd.sh
-./bonus/scripts/gen_cert.sh
+./bonus/scripts/install_k3d_cluster.sh
+./bonus/scripts/install_argocd.sh
 ./bonus/scripts/deploy_gitlab.sh
-./p3/scripts/fix_dns.sh
-./p3/scripts/deploy_playground.sh
-./bonus/scripts/deploy_ingress.sh
+./bonus/scripts/deploy_playground.sh
 
 echo
 echo "[✅] All components deployed."
-echo "  - ArgoCD: https://argo.localhost"
-echo "  - GitLab: https://gitlab.localhost"
+echo "  - ArgoCD: http://localhost:8081"
+echo "  - GitLab: http://localhost:8082"
