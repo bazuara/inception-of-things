@@ -43,3 +43,21 @@ echo "  - Password: $(kubectl get secret -n argocd argocd-initial-admin-secret -
 echo "  - GitLab: http://localhost:8082"
 echo "  - user: root"
 echo "  - password: $GITLAB_PASSWORD"
+
+echo "------------------------------------------------------------"
+echo "[🧪 VERIFICACIÓN MANUAL DEL PLAYGROUND]"
+echo
+echo "1. Ejecuta este comando para obtener la IP del servicio:"
+echo "   kubectl get svc -n dev"
+echo
+echo "2. Copia la ClusterIP del servicio llamado 'playground'."
+echo
+echo "3. Lanza un pod temporal para probar la app desde dentro del cluster:"
+echo "   kubectl run -i --tty debug --image=busybox --rm --restart=Never -- sh"
+echo
+echo "4. Dentro del pod, ejecuta:"
+echo "   wget -qO- http://<ClusterIP>:8888"
+echo
+echo "✅ Si todo va bien, verás:"
+echo "   {\"status\":\"ok\", \"message\": \"v1\"}  (o v2 si ya hiciste upgrade)"
+echo "------------------------------------------------------------"
