@@ -11,10 +11,10 @@ else
   echo "[INFO] Keeping current cluster..."
 fi
 
-./bonus/scripts/install_k3d_cluster.sh
-./bonus/scripts/install_argocd.sh
-./bonus/scripts/deploy_gitlab.sh
-./bonus/scripts/deploy_playground.sh
+./scripts/install_k3d_cluster.sh
+./scripts/install_argocd.sh
+./scripts/deploy_gitlab.sh
+./scripts/deploy_playground.sh
 
 echo
 echo "[✅] All components deployed."
