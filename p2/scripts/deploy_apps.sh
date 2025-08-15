@@ -10,8 +10,12 @@ kubectl rollout status deployment/ingress-nginx-controller -n ingress-nginx
 echo "[INFO] Applying Namespace"
 kubectl apply -f /vagrant/confs/app-namespace.yaml
 
-echo "[INFO] Deploying App1"
+echo "[INFO] Deploying HTML ConfigMap for App1"
+kubectl apply -f /vagrant/confs/app1-configmap.yaml
+
+echo "[INFO] Deploying App1 with custom HTML"
 kubectl apply -f /vagrant/confs/app1-deployment.yaml
+
 
 echo "[INFO] Deploying App2 with 3 replicas"
 kubectl apply -f /vagrant/confs/app2-deployment.yaml
