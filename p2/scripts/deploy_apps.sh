@@ -16,9 +16,14 @@ kubectl apply -f /vagrant/confs/app1-configmap.yaml
 echo "[INFO] Deploying App1 with custom HTML"
 kubectl apply -f /vagrant/confs/app1-deployment.yaml
 
+echo "[INFO] Deploying HTML ConfigMap for App2"
+kubectl apply -f /vagrant/confs/app2-configmap.yaml
 
 echo "[INFO] Deploying App2 with 3 replicas"
 kubectl apply -f /vagrant/confs/app2-deployment.yaml
+
+echo "[INFO] Deploying HTML ConfigMap for App3"
+kubectl apply -f /vagrant/confs/app3-configmap.yaml
 
 echo "[INFO] Deploying App3 (default)"
 kubectl apply -f /vagrant/confs/app3-deployment.yaml
